@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        // 원거리 선택자
+        // 태그에 지정한 id를 이용해 특정 태그만 선택할 수 있는 선택자입니다.
+        // 선택대상 .getElementById("아이디명");
+
+        // 문서 로딩이 끝난 다음에 자바스크립트를 실행하도록
+        // window.onload 내부에 작성하겠습니다.
+        // 아래에 window.onload 세팅을 해주세요.
+
+        window.onload = function(){
+            // 여기에 작성해야 로드가 모두 끝나고 실행
+            var myObj = document.getElementById("title")
+            console.log(myObj)
+            // #title 요소를 가져와서 글씨색을 파란색으로 변겅
+            myObj.style.color="blue";
+            
+            // 특정 태그들을 들고오기
+            // 선택대상.getElementsByTagName("태그명")
+
+            // 1. ul태그 전체를 가져와보세요.
+            // 변수명은 myList입니다.
+
+            var myList = document.getElementsByTagName("ul")
+            console.log(myList)
+
+            // getElementsByTagName등과 같이 s로 끝나는 선택자들은
+            // list로 요소를 가져오기 때문에
+            // 인덱싱해서 원하는 자료를 얻습니다.
+            // 처음으로 나온 ul 조회
+            console.log(myList[0]);
+            // 1번 인덱스로 잡히는 ul#list 조회
+            console.log(myList[1]);
+
+            // 이번에는 문서 전체를 범위로 하지 않고,
+            // 0번째 ul에서 li태그만 모아주세요.
+            // 변수 이름은 myLi 입니다.
+            // hint : <ul> ... </ul>도 DOM 구조를 가지고 있습니다.
+            // ul > li 와 같은 효과가 됨(myList는 ul들 모음 > li 만 얻어왔으므로)
+
+            var myLi = myList[0].getElementsByTagName("li");
+            console.log(myLi);
+
+            // myli 에 대해 반복문으로 테두리를 쳐 주세요. (hint * -> style.테두리선 = "설정값";)
+            var i = 0;
+            while(i < 2) {
+                myLi[i].style.border = "1px solid black";
+                i++;
+            }
+
+            // 아래쪽 ul태그에 대해서
+            // 근거리 선택자의 li는 홀수번째는 green
+            // 짝수번째는 gold로 배경색을 쳐주세요.
+           
+            // 그냥 myList[1]은 근거리 선택자 안에 있는 ul태그 자체를 의미
+            // 그러므로 myList[1].length는 태그에다가 함수를 사용하는 것으로 간주가 되어
+            // 오류가 발생.
+            // id가 list인 ul 태그 내부의 li 태그들을 선택하기 위하여
+            // 새로운 변수 shortLi 안에 선택자를 활용하여 집어넣음
+            // shortLi는 li를 6개 가지고 있는 리스트가됨.
+            
+            var shortLi = myList[1].getElementsByTagName("li")
+
+            console.log(myList[1].getElementsByTagName("li").length)
+            console.log(myList[1].length)
+
+
+            for(var i = 0; i < shortLi.length; i++){
+                if(i % 2 === 0){
+                        shortLi[i].style.backgroundColor = "green";
+                    } else{
+                        shortLi[i].style.backgroundColor = "gold";
+                }
+            }
+            
+            //    i = 0;
+            //    while(i < shortLi.length){
+            //     if(i % 2 === 0){
+            //             shortLi[i].style.backgroundColor = "green";
+            //         } else{
+            //             shortLi[i].style.backgroundColor = "gold";
+            //         }
+            //         i++;
+            //    }
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>선택자</h1>
+        <h2 id="title">원거리 선택자</h2>
+        <ul>
+            <li>getElementById</li>
+            <li>getElementByTagname</li>
+        </ul>
+        <h2>근거리 선택자</h2>
+        <ul id="list">
+            <li>parentNode</li>
+            <li>childNodes</li>
+            <li>chidren</li>
+            <li>firstChild</li>
+            <li>previousSibling</li>
+            <li>nextsibing</li>
+        </ul>    
+    </div>
+</body>
+</html>
