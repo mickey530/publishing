@@ -8,16 +8,21 @@
 
         window.onload = function(){
 
+            // 적재할 위치 가져오기
             var h1 = document.getElementById("h1space");
+
+            // 버튼 가져오기
             var create = document.getElementById("createh1");
             
+            // 버튼에 onclick 이벤트 연결
             create.onclick = function(){
-        
+                // h1 생성        
                 var newH1 = document.createElement("h1");
+                // h1에 끼워넣을 텍스트 생성
                 var text = document.createTextNode("히히");
-        
+                // text를 h1에 조립하기
                 newH1.appendChild(text);
-
+                // 조립 완료된 h1을 h1space에 끼워넣기
                 h1.appendChild(newH1);
             }
         }     
